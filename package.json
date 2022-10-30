@@ -1,0 +1,35 @@
+{
+  "name": "si-bancario",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "Flavio Coutinho",
+    "email": "coutinhoflavio20@gmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "fix": "echo 123"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "./src/**/*.{js,json,md}": [
+      "yarn fix"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
+  }
+}
