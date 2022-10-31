@@ -11,5 +11,5 @@ app.use(router.routes())
 app.use(router.allowedMethods())
 
 
-app.listen(3333);
+app.listen(process.env.SERVER_PORT);
 
