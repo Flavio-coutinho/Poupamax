@@ -1,3 +1,15 @@
-import {x} from './x'
+import Koa from 'koa'
+import bodyParser from 'koa-bodyparser'
+import { router } from './routes'
 
-console.log(x(100));
+
+const app = new Koa()
+
+
+app.use(bodyParser())
+app.use(router.routes())
+app.use(router.allowedMethods())
+
+
+app.listen(3333);
+
