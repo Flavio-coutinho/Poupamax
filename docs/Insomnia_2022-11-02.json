@@ -1,0 +1,237 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-11-02T12:02:48.735Z",
+  "__export_source": "insomnia.desktop.app:v2022.6.0",
+  "resources": [
+    {
+      "_id": "req_af7014a789e54f2cbea34ab5ec3dab67",
+      "parentId": "fld_e407fd3e38174b829485505fac65995c",
+      "modified": 1667390372195,
+      "created": 1667388280396,
+      "url": "{{ _.host }}/users/cl9zl62cf0000uw80mi5v8qhs",
+      "name": "Update User",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/x-www-form-urlencoded",
+        "params": [
+          {
+            "id": "pair_080d8439ddc449b7a41669f2425aebfe",
+            "name": "name",
+            "value": "Coutinho Flavio",
+            "description": ""
+          },
+          {
+            "id": "pair_f4d62838fe7444dbb1a663b67106238c",
+            "name": "email",
+            "value": "coutinho.joao@gmail.com",
+            "description": ""
+          },
+          {
+            "id": "pair_fa16764dbb8c4313b2c0a70fd7e6f18e",
+            "name": "password",
+            "value": "12333",
+            "description": ""
+          },
+          {
+            "id": "pair_1d463b6b96e74607a690ea7fb224d16b",
+            "name": "id",
+            "value": "111",
+            "description": ""
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "id": "pair_f2d07c0c59e44ac69242affde563620d"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1667389384426,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_e407fd3e38174b829485505fac65995c",
+      "parentId": "wrk_3ba0487e20a74b81be72b736f1d78e8e",
+      "modified": 1667389968162,
+      "created": 1667389274399,
+      "name": "Users",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1667389274399,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_3ba0487e20a74b81be72b736f1d78e8e",
+      "parentId": null,
+      "modified": 1667055452749,
+      "created": 1667055452749,
+      "name": "New Document",
+      "description": "",
+      "scope": "design",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_348dce31ac464380ae6dc0912f145072",
+      "parentId": "fld_e407fd3e38174b829485505fac65995c",
+      "modified": 1667390415914,
+      "created": 1667389059015,
+      "url": "{{ _.host }}/users/cl9zl62cf0000uw80mi5v8qhs",
+      "name": "Remove User",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1667389384401,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a349a08a772e47aaa2a1f30e9bd8cc32",
+      "parentId": "fld_e407fd3e38174b829485505fac65995c",
+      "modified": 1667390285358,
+      "created": 1667387402886,
+      "url": "{{ _.host }}/users",
+      "name": "Create User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/x-www-form-urlencoded",
+        "params": [
+          {
+            "id": "pair_080d8439ddc449b7a41669f2425aebfe",
+            "name": "name",
+            "value": "Flavio Coutinho",
+            "description": ""
+          },
+          {
+            "id": "pair_f4d62838fe7444dbb1a663b67106238c",
+            "name": "email",
+            "value": "coutinho@gmail.com",
+            "description": ""
+          },
+          {
+            "id": "pair_fa16764dbb8c4313b2c0a70fd7e6f18e",
+            "name": "password",
+            "value": "123456",
+            "description": ""
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "id": "pair_f2d07c0c59e44ac69242affde563620d"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1667389384388.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c6190cebcae046aaa4d41f94017bbb27",
+      "parentId": "fld_e407fd3e38174b829485505fac65995c",
+      "modified": 1667390224507,
+      "created": 1667389384376,
+      "url": "{{ _.host }}/users",
+      "name": "List Users",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1667389384376,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_ec5fe6d08f013f26e810474d72f4bfe981f45959",
+      "parentId": "wrk_3ba0487e20a74b81be72b736f1d78e8e",
+      "modified": 1667389823708,
+      "created": 1667055452777,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": {},
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1667055452777,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_ec5fe6d08f013f26e810474d72f4bfe981f45959",
+      "parentId": "wrk_3ba0487e20a74b81be72b736f1d78e8e",
+      "modified": 1667055452782,
+      "created": 1667055452782,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_f58df4c08bfb47ee9dc3c808c9df4fcd",
+      "parentId": "wrk_3ba0487e20a74b81be72b736f1d78e8e",
+      "modified": 1667390463765,
+      "created": 1667055452768,
+      "fileName": "SI BANCÁRIO",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "uts_8594471de87f4c198ae144f8ad2688dd",
+      "parentId": "wrk_3ba0487e20a74b81be72b736f1d78e8e",
+      "modified": 1667055452791,
+      "created": 1667055452791,
+      "name": "Example Test Suite",
+      "_type": "unit_test_suite"
+    },
+    {
+      "_id": "env_8908090ce55f4e21ac86bf824dd75e97",
+      "parentId": "env_ec5fe6d08f013f26e810474d72f4bfe981f45959",
+      "modified": 1667390071278,
+      "created": 1667389798978,
+      "name": "Local",
+      "data": { "host": "localhost:3333" },
+      "dataPropertyOrder": { "&": ["host"] },
+      "color": "#0a8ff5",
+      "isPrivate": false,
+      "metaSortKey": 1667389798978,
+      "_type": "environment"
+    }
+  ]
+}
