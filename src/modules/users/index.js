@@ -5,13 +5,20 @@ import { prisma } from "~/data";
 
 // TODO: Login
 export const login = async (ctx) => {
-  try {
-    const { email, password } = ctx.request.body;
+  const [type, credentials] = ctx.request.headers.authorization.split(' ')
 
+  if (type !== 'Basic') {
+    ctx.status = 400
+    return;
+  }
+
+  const [email, password] = Buffer.from(credentials, 'base64').toString().split(':')
+
+  try {
     const user = await prisma.user.findUnique({
       where: {
-        email,
-      }
+        email
+      },
     })
 
     const passwordEqual = await bcrypt.compare(password, user.password)
