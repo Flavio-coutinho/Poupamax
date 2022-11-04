@@ -1,6 +1,9 @@
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 import { prisma } from "~/data";
 
+
+// TODO: Login
 export const login = async (ctx) => {
   try {
     const { email, password } = ctx.request.body;
@@ -12,14 +15,14 @@ export const login = async (ctx) => {
       }
     })
 
-    if(!user){
+    if (!user) {
       ctx.status = 404;
       return;
     }
 
     const token = jwt.sign({ sub: user.id }, process.env.JWT_SECRET)
 
-    ctx.body = {user, token};
+    ctx.body = { user, token };
   } catch (error) {
     ctx.status = 500
     ctx.body = 'Algo deu errado, tente novamente';
@@ -28,6 +31,7 @@ export const login = async (ctx) => {
 }
 
 
+// TODO: Listar usuários
 export const list = async (ctx,) => {
   try {
     const users = await prisma.user.findMany();
@@ -39,10 +43,20 @@ export const list = async (ctx,) => {
   }
 }
 
+
+// TODO: Criar usuário
 export const create = async (ctx,) => {
   try {
+    const saltRounds = 10
+
+    const hashedPassword = await bcrypt.hash(ctx.request.body.password, saltRounds)
+
     const user = await prisma.user.create({
-      data: ctx.request.body
+      data: {
+        name: ctx.request.body.name,
+        email: ctx.request.body.email,
+        password: hashedPassword,
+      }
     })
 
     ctx.body = user
@@ -52,6 +66,8 @@ export const create = async (ctx,) => {
   }
 }
 
+
+// TODO: Actualizar usuário
 export const update = async (ctx,) => {
   const { name, email } = ctx.request.body;
 
@@ -70,6 +86,8 @@ export const update = async (ctx,) => {
   }
 }
 
+
+// TODO: Deletar usuário
 export const remove = async (ctx,) => {
   try {
     await prisma.user.delete({
@@ -78,7 +96,7 @@ export const remove = async (ctx,) => {
       },
     })
 
-    ctx.body = { id: ctx.params.id}
+    ctx.body = { id: ctx.params.id }
   } catch (error) {
     ctx.status = 500
     ctx.body = 'Algo deu errado, tente novamente';
