@@ -10,6 +10,7 @@
   "private": true,
   "scripts": {
     "prebuild": "rm -Rf dist",
+    "test" : "yarn jest",
     "build": "babel src --extensions \".js\" --ignore \"*.spec.js,*.test.js\" --out-dir dist --copy-files",
     "dev": "nodemon --exec babel-node -- -r dotenv-safe/config src/index.js"
   },
@@ -20,6 +21,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.18.9",
     "@babel/preset-env": "^7.19.4",
     "babel-plugin-module-resolver": "^4.1.0",
+    "jest": "^29.2.2",
     "koa-bodyparser": "^4.3.0",
     "nodemon": "^2.0.20"
   },
