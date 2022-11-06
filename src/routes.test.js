@@ -1,7 +1,8 @@
 import request from 'supertest';
-import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken'
 import { prisma } from '~/data'
 import { app } from './server-setup'
+import bcrypt from 'bcrypt'
 
 const server = app.listen()
 
@@ -34,7 +35,7 @@ describe('User routes', () => {
     expect(result.status).toBe(404)
   });
 
-  it('should return logged in user by correct credentials', async () => {
+  it.only('should return logged in user by correct credentials', async () => {
     // Preparação
     const email = 'coutinho@gmail.com';
     const password = '123456';
@@ -42,19 +43,23 @@ describe('User routes', () => {
     const saltRounds = 10
     const hashedPassword = await bcrypt.hash(password, saltRounds)
 
-    await prisma.user.create({
+    const user = await prisma.user.create({
       data: { email, password: hashedPassword }
     })
 
     // execução
     const result = await request(server).get('/login').auth(email, password)
+    const decodedToken = jwt.verify(result.body.token, process.env.JWT_SECRET)
 
     // Expectação
     expect(result.status).toBe(200)
     expect(result.body.user).toBeTruthy()
-    expect(result.body.user.id).toBeTruthy()
+    expect(result.body.token).toBeTruthy()
+    expect(result.body.user.id).toBe(user.id)
     expect(result.body.user.email).toBe(email)
-    // expect(result.body.user.password).toBeFalsy()
+    expect(result.body.user.password).toBeFalsy()
+
+    expect(decodedToken.sub).toBe(user.id)
   });
 
 
