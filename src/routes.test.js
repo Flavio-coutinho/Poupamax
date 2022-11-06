@@ -35,7 +35,7 @@ describe('User routes', () => {
     expect(result.status).toBe(404)
   });
 
-  it.only('should return logged in user by correct credentials', async () => {
+  it('should return logged in user by correct credentials', async () => {
     // Preparação
     const email = 'coutinho@gmail.com';
     const password = '123456';

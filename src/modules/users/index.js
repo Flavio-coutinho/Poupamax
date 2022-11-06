@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import { prisma } from "~/data";
 import { decodeBasicToken } from './services'
-import './model'
+import * as model from './model'
 
 
 // TODO: Login
@@ -12,7 +11,7 @@ export const login = async (ctx) => {
       ctx.request.headers.authorization
     )
 
-    const user = await prisma.user.findUnique({
+    const user = await model.findUnique({
       where: {
         email, password
       },
@@ -22,13 +21,6 @@ export const login = async (ctx) => {
       ctx.status = 404;
       return;
     }
-
-    // const passwordEqual = await bcrypt.compare(password, user.password)
-
-    // if (!passwordEqual) {
-    //   ctx.status = 404;
-    //   return;
-    // }
 
     const token = jwt.sign({ sub: user.id }, process.env.JWT_SECRET)
     ctx.body = { user, token };
@@ -49,7 +41,7 @@ export const login = async (ctx) => {
 // TODO: Listar usuários
 export const list = async (ctx,) => {
   try {
-    const users = await prisma.user.findMany();
+    const users = await model.findMany();
     ctx.body = users;
   } catch (error) {
     ctx.status = 500
@@ -66,7 +58,7 @@ export const create = async (ctx,) => {
 
     const hashedPassword = await bcrypt.hash(ctx.request.body.password, saltRounds)
 
-    const user = await prisma.user.create({
+    const user = await model.create({
       data: {
         name: ctx.request.body.name,
         email: ctx.request.body.email,
@@ -87,7 +79,7 @@ export const update = async (ctx,) => {
   const { name, email } = ctx.request.body;
 
   try {
-    const user = await prisma.user.update({
+    const user = await model.update({
       where: {
         id: ctx.params.id
       },
@@ -105,7 +97,7 @@ export const update = async (ctx,) => {
 // TODO: Deletar usuário
 export const remove = async (ctx,) => {
   try {
-    await prisma.user.delete({
+    await model.remove({
       where: {
         id: ctx.params.id
       },
