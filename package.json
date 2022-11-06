@@ -10,6 +10,7 @@
   "private": true,
   "scripts": {
     "prebuild": "rm -Rf dist",
+    "db:migrate" : "yarn prisma migrate dev --preview-feature",
     "test": "yarn jest",
     "build": "babel src --extensions \".js\" --ignore \"*.spec.js,*.test.js\" --out-dir dist --copy-files",
     "dev": "nodemon --exec babel-node -- -r dotenv-safe/config src/index.js"
