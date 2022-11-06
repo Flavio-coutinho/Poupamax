@@ -1,7 +1,7 @@
-import { decodeBasicToken, TokenTypeError, EncodedError, BadCredentials } from './services'
+import { decodeBasicToken } from './services'
 
 
-describe('User module', () => {
+describe('User services', () => {
 
   it('should return credentials  by basic authentication token', () => {
 
